@@ -1,0 +1,61 @@
+
+  
+  <!-- <div ng-controller="AuthenticationController"><br><br> -->
+  
+  
+    <!--<h3 class="col-md-12 text-center">Or sign up using your email</h3>
+    
+    class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4"
+  
+  ng-submit="signup(userForm.$valid)"-->
+  
+   
+      <form name="userForm" class="form-large"  class="signin" novalidate autocomplete="off">
+        <fieldset>
+            
+          <h3 class="col-md-12 text-center">SCHEME DETAILS</h3>
+  
+  <br>        
+  
+         
+          <div  class="form-group left" >
+           
+            <label for="joiningpair">Joining Pair </label>
+          
+            <input type="text"  class="form-control" ng-model="schemes.joining_pair" placeholder="Joining Pair" required>
+         
+          </div>
+    
+            <div class="form-group right">
+              <label for="cashback">Cashback</label>
+              <input class="form-control" type="text" placeholder="Cashback" ng-model="schemes.cashback" >
+            </div>
+  
+  
+  
+  
+  
+  
+  <div  class="form-group left">
+    <label> Gift</label>
+    <input type="text" class="form-control" placeholder="Address" ng-model="credentials.your_address" required>
+  </div>
+  
+  
+  <div  class="form-group right">
+    <label>Instead Gift</label>
+    <input type="text" class="form-control" placeholder="City" ng-model="credentials.city" required>
+  </div>
+</fieldset>
+<fieldset>
+  <div class="text-center form-group ">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  
+              </div>
+  
+            </fieldset>
+      </form>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,174 @@
+@media (min-width: 992px) {
+  .nav-users {
+    position: fixed;
+  }
+}
+.social-account-container {
+  display: inline-block;
+  position: relative;
+}
+.btn-remove-account {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+}
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background:red;
+  cursor: inherit;
+  display: block;
+}
+.user-profile-picture {
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.sm{
+  color:white;
+  background: rgb(79, 148, 73);
+  box-shadow: 10px 5px 8px grey;
+}
+
+/* .ve{
+  color: green;
+  background: transparent;
+  
+  border-bottom: 2px solid black;
+  
+} */
+
+table{
+  margin-left: 10%;
+}
+
+/* tr{
+  box-shadow: 10px 5px 8px rgb(214, 88, 14);
+} */
+  
+
+td{
+  text-align: center;
+  font-size: 20px;
+  padding: 50px;
+  margin-left: 20%;
+  margin-right: 20%;
+  
+  
+}
+
+ table img{
+  width: 100%;
+  height: 180px;
+  
+}
+
+.b{
+  background: rgb(2, 3, 53);
+  color: white;
+  box-shadow: 7px 5px 8px grey;
+  width: 100%;
+  font-size: 20px;
+  
+}
+.b:hover{
+
+  background: rgb(160, 97, 97);
+  color: rgb(0, 5, 2);
+}
+
+h4{
+  color: rgb(4, 9, 53);
+  text-align: center;
+  font-weight: bold;
+  
+  
+}
+
+h3{
+  color: rgb(51, 2, 45, 0.925);
+  text-align: center;
+
+}
+.box{
+  box-shadow: 4px 4px 4px grey;
+  background: rgb(226, 183, 119);
+}
+
+
+.offer{
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.offer img{
+  width: 100%;
+  height: 180px;
+}
+
+.diwali ul{
+  float:left;
+  list-style: none;
+  padding: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+  
+
+}
+.diwali li{
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  
+  color: red;
+
+}
+
+h1{
+  color: rgb(182, 13, 13);
+  font-style: bold;
+  font-size: 50px;
+}
+.form-large {
+  max-width: 884px;
+  padding: 15px 15px 10px;
+  margin: 0 auto 20px;
+  background-color: rgb(185, 171, 171);
+  border: 1px solid #d6d6d6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+
+.abc{
+  width: 100%;
+  display: block;
+}
+.left{
+  width: 45%;
+  float: left;
+}
+.right{
+  width: 45%;
+  float: right;
+}
+
+.dash{
+  float: left;
+  padding: 50px;
+}

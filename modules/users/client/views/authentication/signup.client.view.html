@@ -1,0 +1,210 @@
+<div ng-controller="AuthenticationController"><br><br><br><br>
+   <form style="box-shadow: 0 4px 16px -2px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.02);background-color: white;border:0px" name="userForm" class="form-large" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
+      <fieldset>
+          <fieldset>
+            <h3 class="col-md-12 text-center">SPONSOR INFO</h3>
+              <br>       
+              <div class="abc" >
+              <div class="form-group left" show-errors>
+                <label for="sponsor_id">Sponsor ID</label>
+                <input type="text" id="sponsor_id" name="sponsor_id" class="form-control" ng-model="credentials.sponsor_id" placeholder="Sponsor ID" required>
+                <md-button ng-click="validateSponsorId(credentials.sponsor_id)" class="md-raised md-primary">Validate</md-button>
+                <!-- <button name="Validate" >Validate</button> -->
+                <span>{{validatedDisplayName}}</span>
+                <md-checkbox ng-disabled="true" style="color:green"  ng-checked="checkedStatus" ng-if="checkedStatus"  aria-label="Checkbox 1">
+                </md-checkbox>
+                <!-- <input ng-if="checkedStatus" id="checkFollower" type="checkbox" ng-checked="checkedStatus" > -->
+                <div ng-messages="userForm.lastName.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Sponsor ID is required.</p>
+                </div>
+              </div>
+                <!-- <div class="abc" >
+                   <div  class="form-group left" >
+                    <label for="sponsorid">Sponsor ID </label>
+                    <input type="text"  class="form-control" ng-model="credentials.sponsor_id" placeholder="Sponsor ID" required>
+                   </div> -->
+                  <div  class="form-group right" ng-show="both">
+                   <label for="side">Side</label>
+                   <select class="form-control"  name="state" ng-model="credentials.side">
+                   <option selected value="L">Left Side</option>
+                   <option value="R">Right Side</option>
+                 </select>
+                 <span>Both side is open to add new member</span>
+                </div>
+
+                <div  class="form-group right" ng-show="left">
+                  <label for="side">Side</label>
+                  <select class="form-control"  name="state" ng-model="credentials.side">
+                  <option selected value="R">Right Side</option>                  
+                </select>
+                <span>Right side is open to add new member</span>
+               </div>
+
+               <div  class="form-group right" ng-show="right">
+                <label for="side">Side</label>
+                <select class="form-control"  name="state" ng-model="credentials.side">                
+                <option  selected value="L">Left Side</option>
+              </select>
+              <span>Left side is open to add new member</span>
+             </div>
+             
+           </div>
+             
+              </div>
+              <h3 class="col-md-12 text-center">PERSONAL INFO</h3>
+<br>
+<div class="abc" >
+        <div class="form-group left" show-errors>
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" ng-model="credentials.firstName" placeholder="First Name" required>
+          <div ng-messages="userForm.firstName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">First name is required.</p>
+          </div>
+        </div>
+        <div class="form-group right" show-errors>
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" ng-model="credentials.lastName" placeholder="Last Name" required>
+          <div ng-messages="userForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Last name is required.</p>
+          </div>
+        </div>
+
+<div class="form-group left" show-errors>
+  <label  for="father_name">Father Name</label>
+     <input type="text" id="fathersName" class="form-control" placeholder="Father Name" ng-model="credentials.father_name">
+     <div ng-messages="userForm.lastName.$error" role="alert">
+      <p class="help-block error-text" ng-message="required">Father's name is required.</p>
+    </div>
+</div>
+        <div class="form-group right" show-errors>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
+          <div ng-messages="userForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Email address is required.</p>
+            <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+          </div>
+        </div>        
+          <div class="form-group left">
+            <label for="DOB">DOB</label>
+            <input class="form-control" type="date" placeholder="Date Of Birth" ng-model="credentials.dob" >
+          </div>
+<div class="form-group right">
+  <label for="gender">Gender</label>
+          <select name="state" class="form-control" class="same" ng-model="credentials.gender" >
+            <option value="male">Select Gender</option> 
+            <option value="male">male</option>
+              <option value="female">female</option>
+              <option value="transgender">transgender</option>
+          </select>
+</div>
+<div class="form-group left">
+  <label>Mobile</label>
+  <input type="tel" class="form-control" placeholder="Mobile" ng-model="credentials.mobile">
+</div>
+
+<div  class="form-group right">
+  <label> Address</label>
+  <input type="text" class="form-control" placeholder="Address" ng-model="credentials.your_address" required>
+</div>
+<div  class="form-group left">
+  <label>City</label>
+  <input type="text" class="form-control" placeholder="City" ng-model="credentials.city" required>
+</div>
+<div class="form-group right">
+  <label>Zip code</label>
+  <input type="number" class="form-control" class="same" placeholder="Zip code" ng-model="credentials.zip_code" required>
+</div>
+<div  class="form-group left">
+  <label>State</label>
+  <input type="text" class="form-control" placeholder="State" ng-model="credentials.state" required> 
+</div>
+
+<div class="form-group right">
+  <label>Country</label>
+  <input type="text" class="form-control" placeholder="Country" ng-model="credentials.country">
+      
+</div>
+<div  class="form-group left">
+  <label>Pan No.</label>
+  <input type="number" class="form-control" id="pan" placeholder="Pan No." ng-model="credentials.pan_no" required>
+</div>
+</div>
+
+<h3 class="col-md-12 text-center">ACCOUNT INFO</h3>
+<br>
+
+<div class="form-group right">
+  <label>Bank Name</label>
+      <input type="text" class="form-control" placeholder="Bank Name" ng-model="credentials.bank_name" >
+          
+    </div>
+
+
+ <div class="form-group left">
+                          <label>IFSC</label>
+                          <input type="number" class="form-control" placeholder="IFSC" ng-model="credentials.ifs_code" required>
+                        </div>
+                         <div  class="form-group right">
+                          <label>A/c Type</label>
+                          <select id="type" class="form-control" name="type" placeholder="A/c Type" ng-model="credentials.ac_type" class="same">
+                              <option value="Slect">Saving account</option>
+                              <option value="Horizontal">current account</option>
+                          </select>  
+                          </div>
+
+
+            <div class="form-group left">
+                          <label>Bank Branch Name</label>
+                          <input type="text" class="form-control" id="branch" placeholder="Bank Branch Name" ng-model="credentials.bank_branch_name" required>
+              </div>               
+
+              <div class="form-group left">
+                <label>A/c No.</label>
+                <input type="number" class="form-control" ng-model="credentials.ac_no" placeholder="A/c No." required >
+              </div>
+            </fieldset>
+
+              <h3 class="col-md-12 text-center">LOGIN DETAILS</h3>
+              <br>
+              <div class="form-group" show-errors>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Username" lowercase required>
+                <div ng-messages="userForm.username.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Username is required.</p>
+                </div>
+              </div>
+              <div class="form-group" show-errors>
+                <label for="password">Password</label>
+                  <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
+                <div ng-messages="userForm.password.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Password is required.</p>
+                  <div ng-repeat="passwordError in passwordErrors">
+                    <p class="help-block error-text" ng-show="userForm.password.$error.requirements">{{passwordError}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group " ng-show="!userForm.password.$error.required">
+                <label>Password Requirements</label>
+                <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
+              </div>
+      <div class="form-group ">
+                  <label><input type="checkbox"  ng-model="credentials.accept_all_terms_and_conditions" >Accept all terms and conditions</label>
+                  </div>
+           <div class="text-center form-group ">
+              <button type="submit" class="btn btn-primary">Sign up</button>
+              &nbsp; or&nbsp;
+              <a ui-sref="authentication.signin" class="show-signup">Sign in</a>
+            </div>
+            <div ng-show="error" class="text-center text-danger">
+              <strong ng-bind="error"></strong>
+            </div>
+
+            <fieldset>
+    </form>
+  </div>
+</div>
+
+ 
+
+
+

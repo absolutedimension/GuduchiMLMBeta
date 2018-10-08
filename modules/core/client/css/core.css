@@ -1,0 +1,88 @@
+.content {
+  margin-top: 50px;
+}
+.undecorated-link:hover {
+  text-decoration: none;
+}
+[ng\:cloak],
+[ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+.header-profile-image {
+  opacity: 0.8;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.open .header-profile-image,
+a:hover .header-profile-image {
+  opacity: 1;
+}
+.user-header-dropdown-toggle {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+.error-text {
+  display: none;
+}
+.has-error .help-block.error-text {
+  display: block;
+}
+.has-error .help-inline.error-text {
+  display: inline;
+}
+
+.d{
+  font-size: 24px;
+  margin-left: 15px;
+  margin-right: 15px;
+  text-decoration-color: brown;
+  font-weight: bold;
+
+}
+.image{
+  width: 100%;
+  height: 90%;
+}
+
+.navbar-brand{
+
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.front{
+  text-align: center;
+ color: rgb(41, 41, 2);
+  margin-top: 50px;
+}
+.card{
+  box-shadow: 10px 10px 10px rgb(102, 3, 3);
+  background-image:radial-gradient(rgb(143, 68, 68),green,grey);
+}
+
+h2{
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 30px;
+
+}
+.profile{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-right: 5px;
+
+}
+.memberLeft{
+  float: left;
+}
+.memberRight{
+  float: right;
+}
+

@@ -1,0 +1,73 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.addproduct._id ? 'Edit Addproduct' : 'New Addproduct'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.addproductForm" class="form-horizontal" ng-submit="vm.save(vm.form.addproductForm.$valid)" novalidate>
+      <fieldset>
+        <!-- <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.addproduct.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.addproductForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Addproduct name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.addproduct._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div> -->
+
+
+        <h3 class="col-md-12 text-center">PRODUCT DETAILS</h3>
+
+        <br>        
+        
+             
+              <div  class="form-group left" >
+               
+                <label for="joiningpair">Product Name </label>
+              
+                <input type="text"  class="form-control" ng-model="schemes.joining_pair" placeholder="Joining Pair" required>
+             
+              </div>
+        
+                <div class="form-group right">
+                  <label for="cashback">Product Specifications</label>
+                  <input class="form-control" type="text" placeholder="Cashback" ng-model="schemes.cashback" >
+                </div>
+        
+        
+        
+        
+        
+        
+        <div  class="form-group left">
+        <label> Price</label>
+        <input type="text" class="form-control" placeholder="Address" ng-model="credentials.your_address" required>
+        </div>
+        
+        
+        <div  class="form-group right">
+        <label>Fixed Money</label>
+        <input type="text" class="form-control" placeholder="City" ng-model="credentials.city" required>
+        </div>
+        <div  class="form-group left">
+            <label>EMI Per Month</label>
+            <input type="text" class="form-control" placeholder="City" ng-model="credentials.city" required>
+            </div>
+            
+        
+        </fieldset>
+        <fieldset>
+        <div class="text-center form-group ">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+                  </div>
+        
+
+      </fieldset>
+    </form>
+  </div>
+</section>

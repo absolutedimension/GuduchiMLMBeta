@@ -1,0 +1,30 @@
+<div ng-controller="TreeViewController"> 
+   
+   <script type="text/ng-template" id="tree_item_renderer.html">
+    {{data.name}}{{data.side}}
+    <button ng-click="viewChildren(data.name)">View Children</button>
+    <button ng-click="delete(data)" ng-show="data.nodes.length > 0">Delete nodes</button>
+    <ul >
+        <li ng-repeat="data in nodes" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+
+   </script>
+   <div style="width: 500px;left: 25%;position: relative">
+    <ul style="list-style: none;" >
+       
+        <!-- {{data.side}} -->
+        <!-- class="label label-{{event.Legal_Actions[0].Event_Action.seq_by === 1 ? 'warning':'danger'}}" -->
+        <div style="position: relative;left: -25%;" ng-repeat="data in tree">
+            <li  class="{{data.side === 'L' ? 'memberLeft':'memberRight'}}"  ng-include="'tree_item_renderer.html'"></li>
+        </div>
+    </ul>
+</div> 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/boot.js"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine-html.js"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine.js"/> -->
+</div>
+
+
+
+
