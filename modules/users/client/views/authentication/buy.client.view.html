@@ -4,7 +4,7 @@
      <a ui-sref="password.offer"><img src="modules/core/client/img/brand/offer.png"/></a>
     </marquee>
     </div>
-<div>
+<div ng-controller="HomeController">
     <table>
     <tr>
         <td>
@@ -16,7 +16,7 @@
                         <h5>EMI:Rs.1000</h5>
                     </md-card-content>
                     <md-card-footer>
-                     <a class="btn btn-default b" ui-sref="#">BUY</a>
+                     <a class="btn btn-default b" ng-click="testNotification()">BUY</a>
                     </md-card-footer>
                    </md-card>
     </td>

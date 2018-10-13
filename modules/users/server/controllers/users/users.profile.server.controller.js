@@ -95,6 +95,16 @@ exports.changeProfilePicture = function (req, res) {
   }
 };
 
+exports.testNotification = function(req,res){
+  console.log("test000000.........................");
+  var socketio = req.app.get('socketio'); // tacke out socket instance from the app containerc
+
+  console.log("test.........................");
+  var test = {"test" :"test"};
+      socketio.sockets.emit('test.notification', test); // emit an event for all conn
+      res.jsonp(test);
+}
+
 /**
  * Send User
  */
