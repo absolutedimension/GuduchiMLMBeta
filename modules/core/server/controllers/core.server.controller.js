@@ -18,6 +18,8 @@ exports.renderServerError = function (req, res) {
   });
 };
 
+
+
 /**
  * Render the server not found responses
  * Performs content-negotiation on the Accept HTTP header

@@ -1,8 +1,18 @@
-<div style="margin-top: 30px; margin-bottom: 30px;" ng-controller="HomeController">
+<div style="height: 500px;background: #e7e7e7" ng-controller="HomeController">
 
-                <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-<table>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+      
+<div class="carousel" data-flickity='{ "autoPlay": true }' style="height: 500px;">
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+</div>
+<div class="col-md-12" style="background: #e7e7e7">
+<table style="left: 5%;position: relative;" >
     <tr>
         <td>
                 <md-card class="showcase-item__link" >
@@ -212,6 +222,7 @@
                                         </md-card>
                         </td>
                         </tr>
-    </table>
+</table>
+</div>
         
      </div>

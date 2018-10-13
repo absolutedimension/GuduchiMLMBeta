@@ -75,8 +75,8 @@ td{
 }
 
 .b{
-  background: rgb(2, 3, 53);
-  color: white;
+  
+  color: green;
   box-shadow: 7px 5px 8px grey;
   width: 100%;
   font-size: 20px;
@@ -84,8 +84,8 @@ td{
 }
 .b:hover{
 
-  background: rgb(160, 97, 97);
-  color: rgb(0, 5, 2);
+  background: green;
+  color: white;
 }
 
 h4{
@@ -102,10 +102,8 @@ h3{
 
 }
 .box{
-  box-shadow: 4px 4px 4px grey;
-  background: rgb(255, 255, 255);
-  width: 250px;
-  height: 250px;
+  /* box-shadow: 4px 4px 4px grey;
+  background: rgb(226, 183, 119); */
 }
 
 

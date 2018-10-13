@@ -99,6 +99,8 @@ module.exports = function (app, db) {
 
   // Add an event listener to the 'connection' event
   io.on('connection', function (socket) {
+    // socket.emit('news', { hello: 'world' });
+    // console.log("Inside io connections..............");
     config.files.server.sockets.forEach(function (socketConfiguration) {
       require(path.resolve(socketConfiguration))(io, socket);
     });

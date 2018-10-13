@@ -5,6 +5,8 @@
  */
 var config = require('../config'),
   express = require('express'),
+  http = require('http'),
+  socketio = require('socket.io'),
   morgan = require('morgan'),
   logger = require('./logger'),
   bodyParser = require('body-parser'),
@@ -212,7 +214,7 @@ module.exports.configureSocketIO = function (app, db) {
   // Return server object
   return server;
 };
-
+var server;
 /**
  * Initialize the Express application
  */
@@ -251,7 +253,15 @@ module.exports.init = function (db) {
   this.initErrorRoutes(app);
 
   // Configure Socket.io
-  app = this.configureSocketIO(app, db);
+  //app = this.configureSocketIO(app, db);
+
+    // Attach Socket.io
+  server = http.createServer(app);
+  var io = socketio.listen(server);
+  app.set('socketio', io);
+  app.set('server', server);
 
   return app;
 };
+
+
