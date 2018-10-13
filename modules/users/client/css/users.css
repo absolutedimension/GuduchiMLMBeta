@@ -103,7 +103,9 @@ h3{
 }
 .box{
   box-shadow: 4px 4px 4px grey;
-  background: rgb(226, 183, 119);
+  background: rgb(255, 255, 255);
+  width: 250px;
+  height: 250px;
 }
 
 
@@ -171,4 +173,104 @@ h1{
 .dash{
   float: left;
   padding: 50px;
+}
+
+.showcase-item__link {
+  display: block;
+  padding: 10px;
+  background: white;
+  margin-bottom: 80px;
+  border-radius: 8px;
+  width: 250px;
+  height: 250px;
+  background: #DDD;
+}
+
+.showcase-item__link:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.showcase-item__image {
+  width: 80px;
+  float: left;
+  display: block;
+}
+
+.showcase-item__image svg {
+  display: block;
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+}
+
+.showcase-item__text {
+  float: left;
+  width: calc( 100% - 120px );
+  padding-left: 10px;
+}
+
+.showcase-item__title {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.showcase-item__description {
+  margin: 0;
+}
+
+@media screen and ( min-width: 768px ) {
+
+  .showcase-item {
+    float: left;
+    width: 48.5%;
+  }
+
+  .showcase-item:nth-child(2n+1) {
+    margin-right: 3%;
+  }
+
+  .showcase-item__image {
+    width: 120px;
+  }
+
+  .showcase-item__text {
+    padding-left: 20px;
+  }
+
+  .showcase-item__title {
+    font-size: 2.0rem;
+  }
+
+  .showcase-item__description {
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+}
+
+/* showcase
+------------------------- */
+
+.showcase-item-list {
+  padding: 0;
+  list-style: none;
+}
+
+.showcase-item-list:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.showcase-item .infinite-scroll-illo {
+  padding: 5px;
+}
+
+.showcase__banner__image {
+  display: block;
+  max-width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
 }

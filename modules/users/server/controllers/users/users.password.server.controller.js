@@ -11,12 +11,49 @@ var path = require('path'),
   nodemailer = require('nodemailer'),
   async = require('async'),
   crypto = require('crypto');
+  var Mailgun = require('mailgun-js');
 
 var smtpTransport = nodemailer.createTransport(config.mailer.options);
 
 /**
  * Forgot for reset password (forgot POST)
  */
+
+// function sendEmailToClient(){
+//   var api_key_value = 'key-032b2ddfd753c2ee4bd07bc46dff58e1';
+//   var domain_name = 'mg.my-promethean.com';
+
+//   var initMailgun = { apiKey : api_key_value , domain :  domain_name } ;
+//   var mailgun = new Mailgun( initMailgun );
+
+  
+//  // var fp = path.join(__dirname, 'page3.pdf');
+//   var fp = 'Charts/Energy_Report.pdf';
+  
+//   var data = {
+//     from: 'support@my-promethean.com',
+//     to: 'dk.peace@prometheanenergy.com',    
+//     subject: 'Promethean Honda Report',
+//     attachment:fp ,
+//     html: 'Hello, This is not a plain-text email, I wanted to test some spicy Mailgun sauce in NodeJS! <a href="http://0.0.0.0:3030/validate?>Click here to add your email address to a mailing list</a>'
+//   }
+
+//   mailgun.messages().send(data, function (err, body) {
+//       if (err) {
+//           console.log("got an error: ", err);
+//       }
+//       else {
+//           console.log("MAil Sent........"+JSON.stringify(body));
+//          // console.log(body);
+//       }
+//   });
+  
+// }
+
+
+
+
+
 exports.forgot = function (req, res, next) {
   async.waterfall([
     // Generate random token
@@ -71,26 +108,62 @@ exports.forgot = function (req, res, next) {
     },
     // If valid email, send reset email using service
     function (emailHTML, user, done) {
-      var mailOptions = {
-        to: user.email,
-        from: config.mailer.from,
-        subject: 'Password Reset',
-        html: emailHTML
-      };
-      console.log("mailOptions :"+JSON.stringify(mailOptions));
-      smtpTransport.sendMail(mailOptions, function (err) {
-        if (!err) {
-          res.send({
-            message: 'An email has been sent to the provided email with further instructions.'
-          });
-        } else {
-          return res.status(400).send({
-            message: 'Failure sending email :'+err
-          });
-        }
 
-        done(err);
+      console.log("Inside send emaillllllllllllllll");
+
+      var api_key_value = 'key-032b2ddfd753c2ee4bd07bc46dff58e1';
+         var domain_name = 'mg.my-promethean.com';
+      
+
+      // var api_key_value = '4ce2288bdb3c24d8bfb78e979bf859fc-bd350f28-3adee12c';
+      // var domain_name = 'sandbox2190294574594dbf9ccaff4d93f9c746.mailgun.org';
+    
+      var initMailgun = { apiKey : api_key_value , domain :  domain_name } ;
+      var mailgun = new Mailgun( initMailgun );
+    
+      
+     // var fp = path.join(__dirname, 'page3.pdf');
+     // var fp = 'Charts/Energy_Report.pdf';
+      
+      var data = {
+        from: 'dk.peace@gmail.com',
+        to: 'prakashkumarin@gmail.com',    
+        subject: 'Password reset test',        
+        html: 'Hello, This is not a plain-text email, I wanted to test some spicy Mailgun sauce in NodeJS! <a href="http://0.0.0.0:3030/validate?>Click here to add your email address to a mailing list</a>'
+      }
+    
+      mailgun.messages().send(data, function (err, body) {
+          if (err) {
+              console.log("got an error: ", err);
+          }
+          else {
+              console.log("MAil Sent........"+JSON.stringify(body));
+             // console.log(body);
+          }
+          done(err);
       });
+     
+
+      // var mailOptions = {
+      //   to: user.email,
+      //   from: config.mailer.from,
+      //   subject: 'Password Reset',
+      //   html: emailHTML
+      // };
+      // console.log("mailOptions :"+JSON.stringify(mailOptions));
+      // smtpTransport.sendMail(mailOptions, function (err) {
+      //   if (!err) {
+      //     res.send({
+      //       message: 'An email has been sent to the provided email with further instructions.'
+      //     });
+      //   } else {
+      //     return res.status(400).send({
+      //       message: 'Failure sending email :'+err
+      //     });
+      //   }
+
+      //   done(err);
+      // });
     }
   ], function (err,sucess) {
     if (err) {

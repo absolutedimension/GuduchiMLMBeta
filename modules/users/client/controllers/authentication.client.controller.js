@@ -30,7 +30,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
 
       $http.post(registerPath, $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
-        $scope.authentication.user = response;
+       // $scope.authentication.user = response;
 
         // And redirect to the previous or home page
         $state.go($state.previous.state.name || 'home', $state.previous.params);
