@@ -4,14 +4,14 @@
       <div class="col-md-6">
         <h1 ng-bind="user.username"></h1>
       </div>
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <a class="btn btn-primary" ui-sref="admin.user-edit({userId: user._id})">
           <i class="glyphicon glyphicon-edit"></i>
         </a>
         <a class="btn btn-primary" ng-click="remove();" ng-if="user._id !== authentication.user._id">
           <i class="glyphicon glyphicon-trash"></i>
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -50,6 +50,20 @@
           <div class="col-md-3"><strong>Side</strong></div>
           <div class="col-md-6" ng-bind="user.side"></div>
         </div>
+        <form name="userForm" ng-submit="approveUser(userForm.$valid)" novalidate>
+          <fieldset>
+        <div class="form-group" show-errors >
+          <label><input type="checkbox" name="approved" ng-model="user.approved" required >Approv</label>
+          <div ng-messages="userForm.approved.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please approve user</p>
+      </div>
+      <div class="text-center form-group ">
+        <button type="submit" class="btn btn-primary">Approve</button>  
+        
+      </div>
+          </div>
+          </fieldset>
+          </form>
     </div>
   </div>
 </section>

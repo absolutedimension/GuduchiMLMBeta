@@ -1,21 +1,27 @@
-<div ng-controller="AuthenticationController"><br><br><br><br>
-   <form style="box-shadow: 0 4px 16px -2px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.02);background-color: white;border:0px" name="userForm" class="form-large" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
+<div ng-controller="AuthenticationController">
+   <form id="userForm" style="box-shadow: 0 4px 16px -2px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.02);background-color:#e1e4e0;border:0px" name="userForm" class="form-large" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
       <fieldset>
           <fieldset>
             <h3 class="col-md-12 text-center">SPONSOR INFO</h3>
               <br>       
               <div class="abc" >
-              <div class="form-group left" show-errors>
+              <div class="form-group"  show-errors>
                 <label for="sponsor_id">Sponsor ID</label>
-                <input type="text" id="sponsor_id" name="sponsor_id" class="form-control" ng-model="credentials.sponsor_id" placeholder="Sponsor ID" required>
+                <input type="text" id="sponsor_id" name="sponsor_id" class="form-control" ng-model="credentials.sponsor_id" placeholder="Sponsor ID" required >
+                <div ng-show="errorSponsorId" class="text-center text-danger">
+                  <strong ng-bind="errorSponsorId"></strong>
+                </div>
+                <div class="form-group" style="float:right">
                 <md-button ng-click="validateSponsorId(credentials.sponsor_id)" class="md-raised md-primary">Validate</md-button>
+              </div>
                 <!-- <button name="Validate" >Validate</button> -->
-                <span>{{validatedDisplayName}}</span>
-                <md-checkbox ng-disabled="true" style="color:green"  ng-checked="checkedStatus" ng-if="checkedStatus"  aria-label="Checkbox 1">
-                </md-checkbox>
+                <span ng-show="checkedStatus">{{validatedDisplayName}}</span>
+                <!-- <img src="modules/core/client/img/cross.png" width="20px" height="20px" ng-show="UncheckedStatus"/>
+                <img src="modules/core/client/img/tick.png" width="20px" height="20px" ng-show="checkedStatus"/>
+                               -->
                 <!-- <input ng-if="checkedStatus" id="checkFollower" type="checkbox" ng-checked="checkedStatus" > -->
-                <div ng-messages="userForm.lastName.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Sponsor ID is required.</p>
+                <div ng-messages="userForm.sponsor_id.$error" role="alert">
+                  <p class="help-block error-text"  ng-message="required">Sponsor ID is required.</p>
                 </div>
               </div>
                 <!-- <div class="abc" >
@@ -23,7 +29,7 @@
                     <label for="sponsorid">Sponsor ID </label>
                     <input type="text"  class="form-control" ng-model="credentials.sponsor_id" placeholder="Sponsor ID" required>
                    </div> -->
-                  <div  class="form-group right" ng-show="both">
+                  <div  class="form-group" ng-show="both">
                    <label for="side">Side</label>
                    <select class="form-control"  name="state" ng-model="credentials.side">
                    <option selected value="L">Left Side</option>
@@ -31,8 +37,11 @@
                  </select>
                  <span>Both side is open to add new member</span>
                 </div>
+                <div  class="form-group" ng-show="full">                  
+                <span>Cannot add new member,legs already occupied.</span>
+               </div>
 
-                <div  class="form-group right" ng-show="left">
+                <div  class="form-group" ng-show="left">
                   <label for="side">Side</label>
                   <select class="form-control"  name="state" ng-model="credentials.side">
                   <option selected value="R">Right Side</option>                  
@@ -40,7 +49,7 @@
                 <span>Right side is open to add new member</span>
                </div>
 
-               <div  class="form-group right" ng-show="right">
+               <div  class="form-group" ng-show="right">
                 <label for="side">Side</label>
                 <select class="form-control"  name="state" ng-model="credentials.side">                
                 <option  selected value="L">Left Side</option>
@@ -50,10 +59,10 @@
              
            </div>
              
-              </div>
+              
               <h3 class="col-md-12 text-center">PERSONAL INFO</h3>
 <br>
-<div class="abc" >
+
         <div class="form-group left" show-errors>
           <label for="firstName">First Name</label>
           <input type="text" id="firstName" name="firstName" class="form-control" ng-model="credentials.firstName" placeholder="First Name" required>
@@ -61,7 +70,7 @@
             <p class="help-block error-text" ng-message="required">First name is required.</p>
           </div>
         </div>
-        <div class="form-group right" show-errors>
+        <div class="form-group right"  show-errors  >
           <label for="lastName">Last Name</label>
           <input type="text" id="lastName" name="lastName" class="form-control" ng-model="credentials.lastName" placeholder="Last Name" required>
           <div ng-messages="userForm.lastName.$error" role="alert">
@@ -69,14 +78,14 @@
           </div>
         </div>
 
-<div class="form-group left" show-errors>
+<div class="form-group left"   show-errors >
   <label  for="father_name">Father Name</label>
-     <input type="text" id="fathersName" class="form-control" placeholder="Father Name" ng-model="credentials.father_name">
-     <div ng-messages="userForm.lastName.$error" role="alert">
+     <input type="text" name="father_name" id="father_name" class="form-control" placeholder="Father Name" ng-model="credentials.father_name" required>
+     <div ng-messages="userForm.father_name.$error" role="alert">
       <p class="help-block error-text" ng-message="required">Father's name is required.</p>
     </div>
 </div>
-        <div class="form-group right" show-errors>
+        <div class="form-group right"  show-errors  >
           <label for="email">Email</label>
           <input type="email" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
           <div ng-messages="userForm.email.$error" role="alert">
@@ -84,96 +93,140 @@
             <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
           </div>
         </div>        
-          <div class="form-group left">
-            <label for="DOB">DOB</label>
-            <input class="form-control" type="date" placeholder="Date Of Birth" ng-model="credentials.dob" >
+          <div class="form-group left"  show-errors>
+            <label for="dob">DOB</label>
+            <input class="form-control" id="dob" name="dob" type="date" placeholder="Date Of Birth" ng-model="credentials.dob" required >
+            <div ng-messages="userForm.dob.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Date of birth is required.</p>
+            </div>
           </div>
-<div class="form-group right">
+<div class="form-group right" show-errors >
   <label for="gender">Gender</label>
-          <select name="state" class="form-control" class="same" ng-model="credentials.gender" >
-            <option value="male">Select Gender</option> 
-            <option value="male">male</option>
-              <option value="female">female</option>
-              <option value="transgender">transgender</option>
+          <select name="gender" id="gender" class="form-control"  ng-model="credentials.gender" required >            
+            <option selected value="male">Male</option>
+              <option value="female">Female</option>              
           </select>
+          <div ng-messages="userForm.gender.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Gender is required.</p>
+          </div>
 </div>
-<div class="form-group left">
+<div class="form-group left" show-errors >
   <label>Mobile</label>
-  <input type="tel" class="form-control" placeholder="Mobile" ng-model="credentials.mobile">
+  <input type="number" name="mobile" class="form-control" placeholder="Mobile" ng-model="credentials.mobile" required>
+  <div ng-messages="userForm.mobile.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">Mobile no. is required.</p>
+  </div>
 </div>
 
-<div  class="form-group right">
+<div  class="form-group right" show-errors >
   <label> Address</label>
-  <input type="text" class="form-control" placeholder="Address" ng-model="credentials.your_address" required>
+  <input type="text" class="form-control" id="your_address" name="your_address" placeholder="Address" ng-model="credentials.your_address" required>
+  <div ng-messages="userForm.your_address.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">Address is required.</p>
+  </div>
 </div>
-<div  class="form-group left">
+<div  class="form-group left" show-errors >
   <label>City</label>
-  <input type="text" class="form-control" placeholder="City" ng-model="credentials.city" required>
+  <input type="text" class="form-control" placeholder="City" id="city" name="city" ng-model="credentials.city" required>
+  <div ng-messages="userForm.city.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">City is required.</p>
+  </div>
 </div>
-<div class="form-group right">
+<div class="form-group right"  show-errors>
   <label>Zip code</label>
-  <input type="number" class="form-control" class="same" placeholder="Zip code" ng-model="credentials.zip_code" required>
+  <input type="number" class="form-control" id="zip_code" name="zip_code" placeholder="Zip code" ng-model="credentials.zip_code" required>
+  <div ng-messages="userForm.zip_code.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">Zip code is required.</p>
+  </div>
 </div>
-<div  class="form-group left">
+<div  class="form-group left" show-errors >
   <label>State</label>
-  <input type="text" class="form-control" placeholder="State" ng-model="credentials.state" required> 
+  <input type="text" class="form-control" placeholder="State" id="state" name="state" ng-model="credentials.state" required> 
+  <div ng-messages="userForm.state.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">State is required.</p>
+  </div>
 </div>
 
-<div class="form-group right">
+<div class="form-group right" show-errors >
   <label>Country</label>
-  <input type="text" class="form-control" placeholder="Country" ng-model="credentials.country">
+  <input type="text" class="form-control" placeholder="Country" id="country" name="country" ng-model="credentials.country" required>
+  <div ng-messages="userForm.country.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">Country is required.</p>
+  </div>
       
 </div>
-<div  class="form-group left">
+<div  class="form-group left" show-errors >
   <label>Pan No.</label>
-  <input type="number" class="form-control" id="pan" placeholder="Pan No." ng-model="credentials.pan_no" required>
+  <input type="text" class="form-control" id="pan_no"  name="pan_no" placeholder="Pan No." ng-model="credentials.pan_no" required>
+  <div ng-messages="userForm.pan_no.$error" role="alert">
+    <p class="help-block error-text" ng-message="required">PAN is required.</p>
+  </div>
 </div>
-</div>
+
 
 <h3 class="col-md-12 text-center">ACCOUNT INFO</h3>
 <br>
 
-<div class="form-group right">
+<div class="form-group right" show-errors >
   <label>Bank Name</label>
-      <input type="text" class="form-control" placeholder="Bank Name" ng-model="credentials.bank_name" >
+      <input type="text" class="form-control" placeholder="Bank Name" name="bank_name" ng-model="credentials.bank_name" required>
+      <div ng-messages="userForm.bank_name.$error" role="alert">
+        <p class="help-block error-text" ng-message="required">Bank name is required.</p>
+      </div>
           
     </div>
 
 
- <div class="form-group left">
-                          <label>IFSC</label>
-                          <input type="number" class="form-control" placeholder="IFSC" ng-model="credentials.ifs_code" required>
-                        </div>
-                         <div  class="form-group right">
-                          <label>A/c Type</label>
-                          <select id="type" class="form-control" name="type" placeholder="A/c Type" ng-model="credentials.ac_type" class="same">
-                              <option value="Slect">Saving account</option>
-                              <option value="Horizontal">current account</option>
-                          </select>  
-                          </div>
+ <div class="form-group left" show-errors >
+    <label>IFSC</label>
+      <input type="text" class="form-control" name="ifs_code" placeholder="IFSC" ng-model="credentials.ifs_code" required>
+      <div ng-messages="userForm.ifs_code.$error" role="alert">
+        <p class="help-block error-text" ng-message="required">IFSC is required.</p>
+      </div>
+  </div>
+                        
+                        
+                        
+                        
+  <div  class="form-group right" show-errors>
+        <label>A/c Type</label>
+        <select id="ac_type" class="form-control" name="ac_type" placeholder="A/c Type" ng-model="credentials.ac_type" required>
+          <option value="S">Saving account</option>
+          <option value="C">current account</option>
+        </select>  
+  <div ng-messages="userForm.ifs_code.$error" role="alert">
+          <p class="help-block error-text" ng-message="required">A/c Type is required.</p>
+    </div>
+        </div>
 
 
-            <div class="form-group left">
+            <div class="form-group left"  show-errors >
                           <label>Bank Branch Name</label>
-                          <input type="text" class="form-control" id="branch" placeholder="Bank Branch Name" ng-model="credentials.bank_branch_name" required>
+                          <input type="text" class="form-control" id="bank_branch_name" name="bank_branch_name" placeholder="Bank Branch Name" ng-model="credentials.bank_branch_name" required>
+                          <div ng-messages="userForm.bank_branch_name.$error" role="alert">
+                            <p class="help-block error-text" ng-message="required">Bank branch name is required.</p>
+                      </div>
               </div>               
 
-              <div class="form-group left">
+              <div class="form-group left"  show-errors>
                 <label>A/c No.</label>
-                <input type="number" class="form-control" ng-model="credentials.ac_no" placeholder="A/c No." required >
+                <input type="number" name="ac_no" class="form-control" ng-model="credentials.ac_no" placeholder="A/c No." required >
+                <div ng-messages="userForm.ac_no.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">A/c No. is required.</p>
+            </div>
               </div>
             </fieldset>
 
               <h3 class="col-md-12 text-center">LOGIN DETAILS</h3>
               <br>
-              <div class="form-group" show-errors>
-                <label for="username">Username</label>
+              <div class="form-group"  show-errors  >
+                
                 <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Username" lowercase required>
                 <div ng-messages="userForm.username.$error" role="alert">
                   <p class="help-block error-text" ng-message="required">Username is required.</p>
                 </div>
               </div>
-              <div class="form-group" show-errors>
+              <div class="form-group"   show-errors >
                 <label for="password">Password</label>
                   <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
                 <div ng-messages="userForm.password.$error" role="alert">
@@ -187,8 +240,11 @@
                 <label>Password Requirements</label>
                 <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
               </div>
-      <div class="form-group ">
-                  <label><input type="checkbox"  ng-model="credentials.accept_all_terms_and_conditions" >Accept all terms and conditions</label>
+      <div class="form-group" show-errors >
+                  <label><input type="checkbox" name="accept_all_terms_and_conditions" ng-model="credentials.accept_all_terms_and_conditions" required >Accept all terms and conditions</label>
+                  <div ng-messages="userForm.accept_all_terms_and_conditions.$error" role="alert">
+                    <p class="help-block error-text" ng-message="required">Accept all terms and condition.</p>
+              </div>
                   </div>
            <div class="text-center form-group ">
               <button type="submit" class="btn btn-primary">Sign up</button>
@@ -203,8 +259,3 @@
     </form>
   </div>
 </div>
-
- 
-
-
-

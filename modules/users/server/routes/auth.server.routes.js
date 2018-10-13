@@ -13,10 +13,12 @@ module.exports = function (app) {
   app.route('/api/auth/forgot').post(users.forgot);
   app.route('/api/auth/reset/:token').get(users.validateResetToken);
   app.route('/api/auth/reset/:token').post(users.reset);
-
+  
   // Setting up the users authentication api
   app.route('/api/auth/signup').post(users.signup);
   app.route('/api/auth/register').post(users.registerNewUser);
+  app.route('/api/auth/registerByUser').post(users.registerNewUserByUser);
+  app.route('/api/auth/approveUser').post(users.approvUser);
   app.route('/api/auth/getChild').post(users.getChildForParents);
   app.route('/api/auth/getSponsor/:sponsorId').get(users.validateSponsorId);
   app.route('/api/auth/signin').post(users.signin);

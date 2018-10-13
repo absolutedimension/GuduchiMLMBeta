@@ -26,6 +26,8 @@ exports.update = function (req, res) {
   user.lastName = req.body.lastName;
   user.displayName = user.firstName + ' ' + user.lastName;
   user.roles = req.body.roles;
+  user.side = req.body.side;
+  user.approved = req.body.approved;
 
   user.save(function (err) {
     if (err) {
@@ -34,7 +36,24 @@ exports.update = function (req, res) {
       });
     }
 
-    res.json(user);
+    if(req.body.fromApprove && req.body.fromApprove === 'Y'){
+      console.log("Inside approve===="+req.body.fromApprove);
+      console.log("Inside approve sposor iddddd===="+req.body.sponsor_id);
+      User.update({username:req.body.sponsor_id},{$addToSet:{childs:req.body._id}}).exec(function(err,response){
+        if(err){
+            return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+        });
+        } else {
+           // return res.status(200).send(response);
+           res.json(user);
+        }
+    });
+    }else{
+      res.json(user);
+    }
+
+    
   });
 };
 

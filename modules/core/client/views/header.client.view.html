@@ -10,11 +10,11 @@
     
   </div>
  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-    <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
-      <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
-        <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
-        <ul ng-switch-when="dropdown" class="dropdown-menu">
-          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
+    <ul class="nav navbar-nav" style="list-style-type: none;" ng-if="menu.shouldRender(authentication.user);">
+      <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" >
+        <!-- <a ng-switch-when="divider-vertical" class="divider-vertical" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a> -->
+        <ul  class="nav navbar-nav" style="list-style-type:none">
+          <li style="float:left;margin:10px" ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
             <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
           </li>
         </ul>
@@ -41,7 +41,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
 
-        <li ui-sref-active="active">
+        <!-- <li ui-sref-active="active">
             <a ui-sref="dashboard" class="d" style="color: rgb(5, 66, 63) ">DashBoard</a>
           </li>
           <li class="divider-vertical"></li>
@@ -51,13 +51,13 @@
           </li>
           <li ui-sref-active="active">
               <a ui-sref="buy" class="d" style="color: rgb(145, 34, 30)">Buy Products</a>
+              <li class="divider-vertical"></li>
             </li>
-            <li class="divider-vertical"></li>
             <li ui-sref-active="active">
-              <a ui-sref="treeview" class="d" style="color: rgb(170, 147, 19)">Tree View</a>
-            </li>
-            <li class="divider-vertical"></li>
-      
+                <a ui-sref="treeview" class="d" style="color: rgb(145, 34, 30)">Tree View</a>
+                <li class="divider-vertical"></li>
+              </li> -->
+            
       <li class="dropdown" dropdown>
         <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
           <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />

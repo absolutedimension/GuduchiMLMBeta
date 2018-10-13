@@ -9,7 +9,22 @@ angular.module('users.admin.routes').config(['$stateProvider',
         templateUrl: 'modules/users/client/views/admin/list-users.client.view.html',
         controller: 'UserListController'
       })
-      .state('admin.user', {
+      .state('admin.toapproveusers', {
+        url: '/userstoapprovelist',
+        templateUrl: 'modules/users/client/views/admin/list-userstoapprove.client.view.html',
+        controller: 'UserToApproveListController'
+      }).state('admin.approveuser', {
+        url: '/users/:userId/approveuser',
+        templateUrl: 'modules/users/client/views/admin/view-usertoapprove.client.view.html',
+        controller: 'UserController',
+        resolve: {
+          userResolve: ['$stateParams', 'Admin', function ($stateParams, Admin) {
+            return Admin.get({
+              userId: $stateParams.userId
+            });
+          }]
+        }
+      }).state('admin.user', {
         url: '/users/:userId',
         templateUrl: 'modules/users/client/views/admin/view-user.client.view.html',
         controller: 'UserController',

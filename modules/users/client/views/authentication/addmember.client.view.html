@@ -62,21 +62,14 @@
   
   
   
-  <div ng-controller="AuthenticationController"><br><br>
-  
-  
-    <!--<h3 class="col-md-12 text-center">Or sign up using your email</h3>
-    
-    class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4"-->
-  
-   
-      <form name="userForm" class="form-large" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
+  <div ng-controller="AuthenticationController">
+    <form name="userForm" class="form-large" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
         <fieldset>
             <fieldset>
-          <h3 class="col-md-12 text-center">SPONSOR DETAILS</h3>
-  
-  <br>        
-  
+          <h3 class="col-md-12 text-center">SPONSOR DETAILS</h3>  
+    
+          <br> 
+
          <div class="abc" >
           <div  class="form-group left" >
            
@@ -128,22 +121,8 @@
               <p class="help-block error-text" ng-message="required">Email address is required.</p>
               <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
             </div>
-          </div>
-      
-         <!--new fields by Kajal -->
-  
-  
-        
-               
-      
-        
-          
-  
-  
-  
-  
-                        
-            <div class="form-group left">
+          </div>                        
+        <div class="form-group left">
               <label for="DOB">DOB</label>
               <input class="form-control" type="date" placeholder="Date Of Birth" ng-model="credentials.dob" >
             </div>
@@ -157,7 +136,7 @@
               <option value="male">Select Gender</option> 
               <option value="male">male</option>
                 <option value="female">female</option>
-                <option value="transgender">transgender</option>
+                
             </select>
   </div>
   
@@ -211,7 +190,7 @@
   
   <div class="form-group right">
     <label>Bank Name</label>
-        <input type="number" class="form-control" placeholder="Bank Name" ng-model="credentials.bank_name" >
+        <input type="text" class="form-control" placeholder="Bank Name" ng-model="credentials.bank_name" >
             
       </div>
   

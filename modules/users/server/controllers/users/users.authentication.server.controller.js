@@ -60,6 +60,7 @@ exports.registerNewUser = function(req,res){
   user.provider = 'local';
   user.displayName = user.firstName + ' ' + user.lastName;
   user.roles = 'user';
+  user.approved = true;
   user.save(function(err){
     if(err){
       return res.status(400).send({
@@ -79,6 +80,74 @@ exports.registerNewUser = function(req,res){
   });
 };
 
+exports.approvUser = function(req,res){
+  var userObj = req.body;
+  var user = new User(userObj);
+  user.provider = 'local';
+  user.displayName = user.firstName + ' ' + user.lastName;
+  user.roles = 'user';
+  user.approved = true;
+
+
+  User.update({username:userObj.sponsor_id},{$addToSet:{childs:user._id}}).exec(function(err,response){
+    if(err){
+        return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+    });
+    } else {
+      User.update({_id:user._id},{approved:true}).exec(function(err,response1){
+        if(err){
+            return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+        });
+        } else {
+            return res.status(200).send(response1);
+        }
+    });
+    }
+});
+
+
+
+  // user.save(function(err){
+  //   if(err){
+  //     return res.status(400).send({
+  //         message: errorHandler.getErrorMessage(err)
+  //     });
+  //   } else {
+  //     User.update({username:userObj.sponsor_id},{$addToSet:{childs:user._id}}).exec(function(err,response){
+  //         if(err){
+  //             return res.status(400).send({
+  //             message: errorHandler.getErrorMessage(err)
+  //         });
+  //         } else {
+  //             return res.status(200).send(response);
+  //         }
+  //     });
+  //   }
+  // });
+};
+
+
+
+exports.registerNewUserByUser = function(req,res){
+  var userObj = req.body;
+  var user = new User(userObj);
+  user.provider = 'local';
+  user.displayName = user.firstName + ' ' + user.lastName;
+  user.roles = 'user';
+  user.approved = false;
+  user.save(function(err){
+    if(err){
+      return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      return res.status(200).send(user);
+    }
+  });
+};
+
 exports.getChildForParents = function(req,res){
   var usernameToSearch = req.body.username;//JSON.stringify(req.body);
   console.log("username :"+usernameToSearch);
@@ -88,6 +157,7 @@ exports.getChildForParents = function(req,res){
           message: errorHandler.getErrorMessage(err)
         });
       } else {
+        if(response){
         console.log("response :"+JSON.stringify(response));
         User.find({_id:{$in:response.childs}}).exec(function(err,response1){
           if(err){
@@ -98,6 +168,9 @@ exports.getChildForParents = function(req,res){
            res.status(200).send(response1);
          }
         });
+      }else{
+        res.status(200).send({side:'NA'});
+      }
       }
   });
 }
@@ -105,7 +178,7 @@ exports.getChildForParents = function(req,res){
 exports.validateSponsorId = function(req,res){
   var sponsorId = req.params.sponsorId;
   console.log("sponsorId :"+sponsorId);
-  User.findOne({username:sponsorId},{displayName:1,childs:1}).exec(function(err,response){
+  User.findOne({username:sponsorId},{displayName:1,childs:1,side:1}).exec(function(err,response){
     if(err){
       return res.status(400).send({
        message: errorHandler.getErrorMessage(err)
@@ -120,11 +193,20 @@ exports.validateSponsorId = function(req,res){
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        var finalResonse = {
-           "displayName" :response.displayName,
-           "side":response1.side,
-           "childDisplayName":response1.displayName
+        if(response.childs.length>1){
+          var finalResonse = {
+            "displayName" :response.displayName,
+            "side":'full',
+            "childDisplayName":response1.displayName
+         }
+        }else{
+          var finalResonse = {
+            "displayName" :response.displayName,            
+            "side":response.side,
+            "childDisplayName":response1.displayName
+         }
         }
+       
        res.status(200).send(finalResonse);
       }
       });
@@ -141,7 +223,7 @@ exports.validateSponsorId = function(req,res){
     var finalResonse = {
       "displayName" :"Sponser is not found.",
       "side":"NA",
-      "childDisplayName":"No Child"
+      "childDisplayName":"Not Valid Sponsor"
    }
    res.status(200).send(finalResonse);
   }   

@@ -50,10 +50,13 @@ sponsor_id: {
     default: '',
     validate: [validateLocalStrategyProperty, 'Please fill in your 2last name']
 
-  },
-    side: {
-    type: String,
-    trim: true
+  },   
+side: {
+    type: [{
+      type: String,
+      enum: ['L', 'R','head']
+    }],    
+    required: 'Please provide Left(L) or Right(R) side.'
   },
 father_name: {
     type: String,
@@ -98,7 +101,7 @@ father_name: {
     trim: true
   },
   pan_no: {
-    type: Number,
+    type: String,
     trim: true
   },
   ac_type: {
@@ -122,10 +125,13 @@ father_name: {
     trim: true
   },
   ifs_code: {
-    type: Number,
+    type: String,
     trim: true
   },
     accept_all_terms_and_conditions: {
+    type: Boolean
+  },
+  approved: {
     type: Boolean
   },
   displayName: {
