@@ -1,4 +1,4 @@
-<div class="container" ng-controller="HeaderController">
+<div class="container" ng-controller="HeaderController" style="margin-left: 10px;">
   <div class="navbar-header">
     <button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
       <span class="sr-only">Toggle navigation</span>
@@ -14,7 +14,7 @@
       <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" >
         <!-- <a ng-switch-when="divider-vertical" class="divider-vertical" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a> -->
         <ul  class="nav navbar-nav" style="list-style-type:none">
-          <li style="float:left;margin:10px" ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
+          <li style="float:left" ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
             <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
           </li>
         </ul>
@@ -58,7 +58,7 @@
                 <li class="divider-vertical"></li>
               </li> -->
             
-      <li class="dropdown" dropdown>
+      <li class="dropdown" style="right: 10px;position: absolute;" dropdown>
         <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
           <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
           <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
