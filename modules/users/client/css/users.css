@@ -53,9 +53,10 @@ table{
   margin-left: 10%;
 }
 
-/* tr{
-  box-shadow: 10px 5px 8px rgb(214, 88, 14);
-} */
+tr{
+  box-shadow: 0px 0.5px 0px 0px rgb(155, 153, 152);
+  
+}
   
 
 td{
@@ -76,15 +77,15 @@ td{
 
 .b{
   
-  color: green;
-  box-shadow: 7px 5px 8px grey;
+  color: #206420;
+  box-shadow: 1px 1px 1px grey;
   width: 100%;
   font-size: 20px;
   
 }
 .b:hover{
 
-  background: green;
+  background: #95C095;
   color: white;
 }
 
@@ -173,14 +174,25 @@ h1{
   padding: 50px;
 }
 
+.showcase-header {
+  display: none;
+  padding: 10px;
+  background: white;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: 500px;
+  height: 40px;
+  background: #DDD;
+}
+
 .showcase-item__link {
   display: block;
   padding: 10px;
   background: white;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   border-radius: 8px;
   width: 250px;
-  height: 250px;
+  height: 330px;
   background: #DDD;
 }
 
@@ -204,8 +216,8 @@ h1{
 }
 
 .showcase-item__text {
-  float: left;
   width: calc( 100% - 120px );
+  float: left;
   padding-left: 10px;
 }
 
@@ -272,3 +284,30 @@ h1{
   margin-top: 10px;
   border-radius: 5px;
 }
+.carousel {
+  background: #EEE;
+  }
+  
+  .carousel-cell {
+  width: 66%;
+  height: 100%;
+  
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
+  }
+  
+  /* cell number */
+  .carousel-cell:before {
+  display: block;
+  text-align: center;
+  /* content: counter(gallery-cell); */
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+  }
+  .input {
+  background: #e7e7e7;
+  border: 0px;
+  }

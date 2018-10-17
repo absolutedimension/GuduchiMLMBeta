@@ -5,7 +5,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     // This provides Authentication context.
     $scope.authentication = Authentication;
     Socket.on('test.notification', function(test) {
-      //alert("Recieved.....");
+      alert("Recieved.....");
     });
 
     $scope.testNotification = function(){

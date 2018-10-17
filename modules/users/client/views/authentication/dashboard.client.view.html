@@ -3,29 +3,55 @@
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<div class="carousel" data-flickity='{ "autoPlay": true }' style="height: 450px;marginBottom:100px;">
+        <div class="carousel-cell">                        <!-- <img data-flickity-lazyload="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg" /> -->
+        <img ng-src="https://www.garuda-indonesia.com/images/discover/destination/top-20-destination/archive-list-banner/top-destination-bangkok.jpg" width="100%" >             
+       </div>
       
-<div class="carousel" data-flickity='{ "autoPlay": true }' style="height: 500px;">
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
+        <div class="carousel-cell">
+        <img ng-src="https://cdn.pixabay.com/photo/2016/11/08/04/51/bangkok-1807480_960_720.jpg" width="100%" />
+        </div>
+        
+        <div class="carousel-cell">
+        <img ng-src="https://cdn.pixabay.com/photo/2017/11/23/07/46/babe-2972219__340.jpg" width="100%" >
+        </div>
+        <div class="carousel-cell">
+        <img ng-src="https://cdn.pixabay.com/photo/2015/07/15/11/53/woodtype-846088__340.jpg" width="100%" >
+        </div>
 </div>
+<!-- <md-divider md-inset:true></md-divider> -->
+<!-- <div style="background: #e7e7e7;" class="col-md-12">
+<table class="showcase-header">
+        <tr ><h3>Gifts and Cashbak</h3></tr>
+</table>
+
+</div> -->
+</br></br>
 <div class="col-md-12" style="background: #e7e7e7">
-<table style="left: 5%;position: relative;" >
+<table  >
+                <tr ><h3>Gifts and Cashbak</h3></tr>
     <tr>
         <td>
-                <md-card class="showcase-item__link" >
+              <md-card  class="showcase-item__link">
                     <md-card-content>
                     <!-- <h4><center>On joining 2 pair</center></h4><br>
                     <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
                     
                     <img ng-src="/modules/users/client/img/offer/dinner_set.jpg">
+                   
+                           <h5>Dinner Set</h5>
+                        <h5>Rs.500 Cashbak</h5>
+                    
+                    
+                    <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                    
                    </md-card-content>
-                    <md-card-footer>
-                    <!-- <a class="btn btn-default b" ui-sref="addmember">2 Pair</a> -->
-                     </md-card-footer>
+                    <!-- <md-card-footer>
+                                <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                     </md-card-footer> -->
                     </md-card>
+                    
     </td>
     <td>
             <md-card class="showcase-item__link">
@@ -33,193 +59,259 @@
                         <!-- <h4><center>On joining 25 pair</center></h4><br>
                         <h5>Get 5000 cashback<br>and <br>MOBILE</h5> -->
                         <img ng-src="/modules/users/client/img/offer/mobile.jpg">
-               </md-card-content>
-                <md-card-footer>
+                        <h5>Mobile Phones</h5>
+                        <h5>Rs.5000 Cash</h5>
                         <a class="btn btn-default b" ui-sref="addmember">25 Pair</a>
-                 </md-card-footer>
+               </md-card-content>
+                <!-- <md-card-footer>
+                        
+                 </md-card-footer> -->
                 </md-card>
 </td>
 <td>
-        <md-card class="box">
+        <md-card class="showcase-item__link">
             <md-card-content>
                     <!-- <h4><center>On joining 50 pair</center></h4><br>
                     <h5>Get 7000 cashback<br>OR<br>BANGKOK TRIP</h5> -->
                     <img ng-src="/modules/users/client/img/offer/bankok_trip.jpg">
-           </md-card-content>
-            <md-card-footer>
+                    <h5>Bankok Trip</h5>
+                    <h5>Rs.7000 Cash</h5>
                     <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
-             </md-card-footer>
+           </md-card-content>
+            <!-- <md-card-footer>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+             </md-card-footer> -->
             </md-card>
 </td>
     </tr>
 
     <tr>
-            <td>
-                    <md-card class="box">
-                        <md-card-content>
-                        <!-- <h4><center>On 120 pair</center></h4><br>
-                        <h5>Get 10000 cashback<br>and <br>APPLE LAPTOP</h5> -->
-                        <img ng-src="/modules/users/client/img/offer/apple_laptop.jpg">
-                       </md-card-content>
-                        <md-card-footer>
-                                <a class="btn btn-default b" ui-sref="addmember">120 Pair</a>
-                         </md-card-footer>
-                        </md-card>
-        </td>
         <td>
-                <md-card class="box">
+              <md-card  class="showcase-item__link">
                     <md-card-content>
-                    <!-- <h4><center>On making 500 pair</center></h4>
-                    <br>
-                    <h5>Get 25000 cashback<br>and <br>BULLET BIKE</h5> -->
-                    <img ng-src="/modules/users/client/img/offer/bullet_bike.jpg">
+                    <!-- <h4><center>On joining 2 pair</center></h4><br>
+                    <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
+                    
+                    <img ng-src="/modules/users/client/img/offer/dinner_set.jpg">
+                   
+                           <h5>Dinner Set</h5>
+                        <h5>Rs.500 Cashbak</h5>
+                    
+                    
+                    <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                    
                    </md-card-content>
-                    <md-card-footer>
-                     <a class="btn btn-default" ui-sref="addmember">500 Pair</a>
-                     </md-card-footer>
+                    <!-- <md-card-footer>
+                                <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                     </md-card-footer> -->
                     </md-card>
+                    
     </td>
     <td>
-            <md-card class="box">
+            <md-card class="showcase-item__link">
                 <md-card-content>
-                <!-- <h4><center>On making 1010 pair</center></h4>
-                <br>
-                <h5>Get 50000 cashback<br>and <br>ALTO CAR</h5> -->
-                <img ng-src="/modules/users/client/img/offer/alto_car.jpg">
+                        <!-- <h4><center>On joining 25 pair</center></h4><br>
+                        <h5>Get 5000 cashback<br>and <br>MOBILE</h5> -->
+                        <img ng-src="/modules/users/client/img/offer/mobile.jpg">
+                        <h5>Mobile Phones</h5>
+                        <h5>Rs.5000 Cash</h5>
+                        <a class="btn btn-default b" ui-sref="addmember">25 Pair</a>
                </md-card-content>
-                <md-card-footer>
-                 <a class="btn btn-default b" ui-sref="addmember">1010 Pair</a>
-                 </md-card-footer>
+                <!-- <md-card-footer>
+                        
+                 </md-card-footer> -->
                 </md-card>
 </td>
-        </tr>
-
-        <tr>
-                <td>
-                        <md-card class="box">
-                            <md-card-content>
-                            <h4><center>On making 2020 pair</center></h4>
-                            <br>
-                            <h5>Get 75000 cashback<br>and<br>SWIFT CAR</h5>
-                           </md-card-content>
-                            <md-card-footer>
-                             <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                             </md-card-footer>
-                            </md-card>
-            </td>
-            <td>
-                    <md-card class="box">
-                        <md-card-content>
-                        <h4><center>On Making 3500 pair</center></h4>
-                        <br>
-                        <h5>Get 100000 cashback<br>and <br>XUV300 MAHINDRA</h5>
-                       </md-card-content>
-                        <md-card-footer>
-                         <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                         </md-card-footer>
-                        </md-card>
-        </td>
+<td>
+        <md-card class="showcase-item__link">
+            <md-card-content>
+                    <!-- <h4><center>On joining 50 pair</center></h4><br>
+                    <h5>Get 7000 cashback<br>OR<br>BANGKOK TRIP</h5> -->
+                    <img ng-src="/modules/users/client/img/offer/bankok_trip.jpg">
+                    <h5>Bankok Trip</h5>
+                    <h5>Rs.7000 Cash</h5>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+           </md-card-content>
+            <!-- <md-card-footer>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+             </md-card-footer> -->
+            </md-card>
+</td>
+    </tr>
+    <tr>
         <td>
-                <md-card class="box">
+              <md-card  class="showcase-item__link">
                     <md-card-content>
-                    <h4><center>On making 7500 pair</center></h4>
-                    <br>
-                    <h5>Get 150000 cashback<br>and <br>MAHINDRA SCORPIO</h5>
+                    <!-- <h4><center>On joining 2 pair</center></h4><br>
+                    <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
+                    
+                    <img ng-src="/modules/users/client/img/offer/dinner_set.jpg">
+                   
+                           <h5>Dinner Set</h5>
+                        <h5>Rs.500 Cashbak</h5>
+                    
+                    
+                    <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                    
                    </md-card-content>
-                    <md-card-footer>
-                     <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                     </md-card-footer>
+                    <!-- <md-card-footer>
+                                <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                     </md-card-footer> -->
                     </md-card>
+                    
     </td>
-            </tr>
-
-            <tr>
-                    <td>
-                            <md-card class="box">
-                                <md-card-content>
-                                <h4><center>On making 15000 pair</center></h4>
-                                <br>
-                                <h5>Get 200000 cashback<br>and <br>XUV</h5>
-                               </md-card-content>
-                                <md-card-footer>
-                                <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                                 </md-card-footer>
-                                </md-card>
-                </td>
-                <td>
-                        <md-card class="box">
-                            <md-card-content>
-                            <h4><center>On making 30000 pair</center></h4>
-                            <br>
-                            <h5>Get 300000 cashback<br>and <br>FOURTUNER</h5>
-                           </md-card-content>
-                            <md-card-footer>
-                            <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                             </md-card-footer>
-                            </md-card>
-            </td>
-            <td>
-                    <md-card class="box">
-                        <md-card-content>
-                        <h4><center>On Making 250000 pair</center></h4>
-                        <br>
-                        <h5>Get 100000 cashback<br>and <br>BMW X6</h5>
-                       </md-card-content>
-                        <md-card-footer>
-                                <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                         </md-card-footer>
-                        </md-card>
-        </td>
-                </tr>
-                <tr>
-                        <td>
-                                <md-card class="box">
-                                    <md-card-content>
-                                    <h4><center>On making 50000 pair</center></h4>
-                                    <br>
-                                    <h5>Get 400000 cashback<br>and <br>ROVER DISCOVERY</h5>
-                                   </md-card-content>
-                                    <md-card-footer>
-                                    <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                                     </md-card-footer>
-                                    </md-card>
-                    </td>
-                    <td>
-                            <md-card class="box">
-                                <md-card-content>
-                                <h4><center>On Making 100000 pair</center></h4>
-                                <br>
-                                <h5>Get 500000 cashback<br>and <br>RANGE ROVER EVOQUE</h5>
-                               </md-card-content>
-                                <md-card-footer>
-                                        <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                                 </md-card-footer>
-                                </md-card>
-                </td>
-                <td>
-                        <md-card class="box">
-                            <md-card-content>
-                            <h4><center>On joining<br>1000000 pair</center></h4><br>
-                            <h5>Get 2000000 cashback<br>OR<br>LAMBORGINI</h5>
-                           </md-card-content>
-                            <md-card-footer>
-                                    <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                             </md-card-footer>
-                            </md-card>
-            </td>
-                    </tr>
+    <td>
+            <md-card class="showcase-item__link">
+                <md-card-content>
+                        <!-- <h4><center>On joining 25 pair</center></h4><br>
+                        <h5>Get 5000 cashback<br>and <br>MOBILE</h5> -->
+                        <img ng-src="/modules/users/client/img/offer/mobile.jpg">
+                        <h5>Mobile Phones</h5>
+                        <h5>Rs.5000 Cash</h5>
+                        <a class="btn btn-default b" ui-sref="addmember">25 Pair</a>
+               </md-card-content>
+                <!-- <md-card-footer>
+                        
+                 </md-card-footer> -->
+                </md-card>
+</td>
+<td>
+        <md-card class="showcase-item__link">
+            <md-card-content>
+                    <!-- <h4><center>On joining 50 pair</center></h4><br>
+                    <h5>Get 7000 cashback<br>OR<br>BANGKOK TRIP</h5> -->
+                    <img ng-src="/modules/users/client/img/offer/bankok_trip.jpg">
+                    <h5>Bankok Trip</h5>
+                    <h5>Rs.7000 Cash</h5>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+           </md-card-content>
+            <!-- <md-card-footer>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+             </md-card-footer> -->
+            </md-card>
+</td>
+    </tr>
+    <tr>
+        <td>
+              <md-card  class="showcase-item__link">
+                    <md-card-content>
+                    <!-- <h4><center>On joining 2 pair</center></h4><br>
+                    <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
+                    
+                    <img ng-src="/modules/users/client/img/offer/dinner_set.jpg">
+                   
+                           <h5>Dinner Set</h5>
+                        <h5>Rs.500 Cashbak</h5>
+                    
+                    
+                    <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                    
+                   </md-card-content>
+                    <!-- <md-card-footer>
+                                <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                     </md-card-footer> -->
+                    </md-card>
+                    
+    </td>
+    <td>
+            <md-card class="showcase-item__link">
+                <md-card-content>
+                        <!-- <h4><center>On joining 25 pair</center></h4><br>
+                        <h5>Get 5000 cashback<br>and <br>MOBILE</h5> -->
+                        <img ng-src="/modules/users/client/img/offer/mobile.jpg">
+                        <h5>Mobile Phones</h5>
+                        <h5>Rs.5000 Cash</h5>
+                        <a class="btn btn-default b" ui-sref="addmember">25 Pair</a>
+               </md-card-content>
+                <!-- <md-card-footer>
+                        
+                 </md-card-footer> -->
+                </md-card>
+</td>
+<td>
+        <md-card class="showcase-item__link">
+            <md-card-content>
+                    <!-- <h4><center>On joining 50 pair</center></h4><br>
+                    <h5>Get 7000 cashback<br>OR<br>BANGKOK TRIP</h5> -->
+                    <img ng-src="/modules/users/client/img/offer/bankok_trip.jpg">
+                    <h5>Bankok Trip</h5>
+                    <h5>Rs.7000 Cash</h5>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+           </md-card-content>
+            <!-- <md-card-footer>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+             </md-card-footer> -->
+            </md-card>
+</td>
+    </tr>
+    <tr>
+        <td>
+              <md-card  class="showcase-item__link">
+                    <md-card-content>
+                    <!-- <h4><center>On joining 2 pair</center></h4><br>
+                    <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
+                    
+                    <img ng-src="/modules/users/client/img/offer/dinner_set.jpg">
+                   
+                           <h5>Dinner Set</h5>
+                        <h5>Rs.500 Cashbak</h5>
+                    
+                    
+                    <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                    
+                   </md-card-content>
+                    <!-- <md-card-footer>
+                                <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                     </md-card-footer> -->
+                    </md-card>
+                    
+    </td>
+    <td>
+            <md-card class="showcase-item__link">
+                <md-card-content>
+                        <!-- <h4><center>On joining 25 pair</center></h4><br>
+                        <h5>Get 5000 cashback<br>and <br>MOBILE</h5> -->
+                        <img ng-src="/modules/users/client/img/offer/mobile.jpg">
+                        <h5>Mobile Phones</h5>
+                        <h5>Rs.5000 Cash</h5>
+                        <a class="btn btn-default b" ui-sref="addmember">25 Pair</a>
+               </md-card-content>
+                <!-- <md-card-footer>
+                        
+                 </md-card-footer> -->
+                </md-card>
+</td>
+<td>
+        <md-card class="showcase-item__link">
+            <md-card-content>
+                    <!-- <h4><center>On joining 50 pair</center></h4><br>
+                    <h5>Get 7000 cashback<br>OR<br>BANGKOK TRIP</h5> -->
+                    <img ng-src="/modules/users/client/img/offer/bankok_trip.jpg">
+                    <h5>Bankok Trip</h5>
+                    <h5>Rs.7000 Cash</h5>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+           </md-card-content>
+            <!-- <md-card-footer>
+                    <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+             </md-card-footer> -->
+            </md-card>
+</td>
+    </tr>
                     <tr>
-                            <td>
-                                    <md-card class="box">
-                                        <md-card-content>
-                                        <h4><center>On joining<br>
-                                            1500000 pair</center></h4><br>
-                                        <h5>Get 5000000 cashback<br>OR<br>BUNGLOW</h5>
-                                       </md-card-content>
-                                        <md-card-footer>
-                                         <a class="btn btn-default b" ui-sref="addmember">JOIN NOW</a>
-                                         </md-card-footer>
-                                        </md-card>
+                        <td>
+                                <md-card class="showcase-item__link">
+                                    <md-card-content>
+                                            <!-- <h4><center>On joining 50 pair</center></h4><br>
+                                            <h5>Get 7000 cashback<br>OR<br>BANGKOK TRIP</h5> -->
+                                            <img ng-src="/modules/users/client/img/offer/bankok_trip.jpg">
+                                            <h5>Bankok Trip</h5>
+                                            <h5>Rs.7000 Cash</h5>
+                                            <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+                                   </md-card-content>
+                                    <!-- <md-card-footer>
+                                            <a class="btn btn-default b" ui-sref="addmember">50 Pair</a>
+                                     </md-card-footer> -->
+                                    </md-card>
                         </td>
                         </tr>
 </table>
