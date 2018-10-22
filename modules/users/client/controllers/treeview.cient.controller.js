@@ -30,9 +30,9 @@ function getTreeNodes(username){
         //     right:(response.data[i].side == 'R') ? 'right':'left'
         //  };
         // mlmTree.add(leftRight);
-         nodes.push({ name: response.data[i].username, nodes: [] ,side:response.data[i].side});
+         nodes.push({ name: response.data[i].username,your_address:response.data[i].your_address, displayName:response.data[i].displayName,sponsor_id:response.data[i].sponsor_id,nodes: [{child1:response.data[i].childs[0]},{child2:response.data[i].childs[1]}] });
        }
-       $scope.tree = nodes;
+       $scope.treeData = new kendo.data.HierarchicalDataSource({data:nodes});
       // $scope.tree = mlmTree;
        
       //$scope.tree = [{ name: "Add Gudichi Member", nodes: response.data }];
@@ -40,6 +40,80 @@ function getTreeNodes(username){
         alert("error :"+JSON.stringify(error));
      });
    }
+
+   function getChildById(username,array,index){
+    $http.post('api/auth/getChild',{"username":username}).then(function(response){
+      console.log("Response child............ :"+JSON.stringify(response).data,response.data);
+      for(var i= 0 ; i < response.data.length; i++) {
+        $scope.tree.append({name:response.data[i].username,displayName:response.data[i].displayName,your_address:response.data[i].your_address
+        ,sponsor_id:response.data[i].sponsor_id}, $scope.tree.select());
+      }
+      console.log("$scope.tree :"+$scope.tree);
+      child_populated = true;
+     // $scope.tree.append({name:response.data.username}, $scope.tree.select());
+     // array.splice(index + 1, 0, {name:response.data.data.username});
+     // return { name: response.username };
+    }).catch(function(error){
+       alert("error :"+JSON.stringify(error));
+    });
+  }
+
+
+
+  //  $scope.treeData = new kendo.data.HierarchicalDataSource({ data: [
+  //   { text: "Item 1" },
+  //   { text: "Item 2", items: [
+  //     { text: "SubItem 2.1" },
+  //     { text: "SubItem 2.2" }
+  //   ] },
+  //   { text: "Item 3" }
+  // ]});
+
+  $scope.click = function(dataItem) {
+    alert(dataItem.name);
+  };
+
+  function makeItem() {
+
+   // var txt = kendo.toString(new Date(), "HH:mm:ss");
+    return { text: txt };
+  };
+
+  $scope.addAfter = function(item) {
+    alert(item);
+    var array = item.parent();
+    var index = array.indexOf(item);
+    var newItem = getChildById(item.nodes[0].child1,array,index);
+   // getChildById(item.nodes[0].child1);
+    console.log("newItem :"+newItem);
+   // var newItem = makeItem();
+   // array.splice(index + 1, 0, newItem);
+  };
+  var child_populated = false;
+  $scope.addBelow = function(item,selectedItem) {
+    // can't get this to work by just modifying the data source
+    // therefore we're using tree.append instead.
+   // var newItem = makeItem();
+    var array = item.parent();
+    var index = array.indexOf(item);
+    console.log("item.username..........  :"+JSON.stringify(item ));
+    if(item.name == selectedItem.name && !child_populated) {
+      
+      var newItem = getChildById(item.name,array,index);
+    } else {
+      alert("All childs for "+item.username+" populated");
+    }
+    
+    //$scope.tree.append(newItem, $scope.tree.select());
+  };
+
+  $scope.remove = function(item) {
+    var array = item.parent();
+    var index = array.indexOf(item);
+    array.splice(index, 1);
+
+    $scope.selectedItem = undefined;
+  };
 
 
   

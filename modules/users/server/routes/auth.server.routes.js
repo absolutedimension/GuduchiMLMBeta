@@ -20,7 +20,9 @@ module.exports = function (app) {
   app.route('/api/auth/registerByUser').post(users.registerNewUserByUser);
   app.route('/api/auth/approveUser').post(users.approvUser);
   app.route('/api/auth/getChild').post(users.getChildForParents);
-  app.route('/api/auth/getSponsor/:sponsorId').get(users.validateSponsorId);
+  app.route('/api/auth/getChildById').post(users.getChildById);
+  app.route('/api/auth/getChildById').post(users.getChildById);
+  app.route('/api/auth/getAllNodes').post(users.getAllNodesForUsername);
   app.route('/api/auth/signin').post(users.signin);
   app.route('/api/auth/signout').get(users.signout);
 

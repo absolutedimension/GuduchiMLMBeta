@@ -175,6 +175,60 @@ exports.getChildForParents = function(req,res){
   });
 }
 
+exports.getAllNodesForUsername = function(req,res){
+  var sponsorId = req.body.sponsorId;
+  console.log("SponsorId :"+sponsorId);
+  var descendants=[]
+  var stack=[];
+  User.findOne({sponsor_id:sponsorId}).exec(function(err,item){
+
+      console.log("Item "+item.childs[0]);
+ // return;
+ // stack.push(item);
+  while (item.childs.length>0){
+      //var currentnode = stack.pop();
+      var children = User.find({_id:item.childs[i]});
+      while(true === children.hasNext()) {
+          var child = children.next();
+          descendants.push(child);
+          console.log("Childs before stack :"+JSON.stringify(child));
+          stack.push(child);
+      }
+  }
+  res.status(200).send({obj:stack});
+
+  });
+}
+
+
+exports.getChildById = function(req,res){
+  var userId = req.body.id;//JSON.stringify(req.body);
+  console.log("userId :"+userId);
+  User.findOne({_id:userId}).exec(function(err,response){
+      if(err){
+         return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        if(response){
+        console.log("responseInsidechildById :"+JSON.stringify(response));
+        res.status(200).send({data:response});
+        // User.find({_id:{$in:response.childs}}).exec(function(err,response1){
+        //   if(err){
+        //     return res.status(400).send({
+        //      message: errorHandler.getErrorMessage(err)
+        //    });
+        //  } else {
+        //    res.status(200).send(response1);
+        //  }
+        // });
+      }else{
+        res.status(200).send({side:'NA'});
+      }
+      }
+  });
+}
+
 exports.validateSponsorId = function(req,res){
   var sponsorId = req.params.sponsorId;
   console.log("sponsorId :"+sponsorId);

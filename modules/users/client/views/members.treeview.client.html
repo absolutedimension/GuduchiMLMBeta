@@ -2,23 +2,51 @@
 
 
    
-                <div class="demo-section k-content" ng-controller="MyCtrl">
+                <div class="demo-section k-content">
                     <div class="box-col">
                         <h4>TreeView</h4>
                         <div kendo-tree-view="tree"
                          k-data-source="treeData"
                          k-on-change="selectedItem = dataItem">
-                            <span k-template>
-                                 {{dataItem.text}} <button class='k-button' ng-click='click(dataItem)'>Select</button>
-                             </span>
+                         <md-card  class="showcase-item__link" k-template style="height: 150px;cursor: pointer;" ng-click='addBelow(dataItem,selectedItem)' >
+                                <md-card-content>
+                                <!-- <h4><center>On joining 2 pair</center></h4><br>
+                                <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
+                                
+                                <!-- <img ng-src="/modules/users/client/img/offer/dinner_set.jpg"> -->
+                               
+                                       <!-- <h5>Member Name</h5> -->
+                                    <div style="width:100%">
+                                        <img style="float: left;" ng-src="modules/users/client/img/profile/default.png" ng-click='addBelow(dataItem,selectedItem)' class="header-profile-image" src="modules/users/client/img/profile/default.png">
+                                        <h5 style="float:right;"> {{dataItem.displayName}}</h5>
+                                    </div>   
+                                   
+                                    <h5> {{dataItem.name}}</h5>
+                                    <h5> {{dataItem.your_address}}</h5>
+
+                                    <h5> Parent Name :{{dataItem.sponsor_id}}</h5>
+                                
+                                
+                                <!-- <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a> -->
+                                
+                               </md-card-content>
+                                <!-- <md-card-footer>
+                                            <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a>
+                                 </md-card-footer> -->
+                                </md-card>
+                            <!-- <span k-template>
+                                    <img ng-src="modules/users/client/img/profile/default.png" ng-click='addBelow(dataItem)' class="header-profile-image" src="modules/users/client/img/profile/default.png">
+                                    {{dataItem.name}}
+                                 <!-- {{dataItem.name}} <button class='k-button' ng-click='addBelow(dataItem)'>GetChild</button> -->
+                            <!-- </span> -->
                          </div>
                     </div>
-                    <div class="box-col" ng-show="selectedItem">
-                      <h4>Selected: {{selectedItem.text}}</h4>
-                      <button class="k-button" ng-click="addAfter(selectedItem)">Add item below</button>
+                    <!-- <div class="box-col" ng-show="selectedItem">
+                      <h4>Selected: {{selectedItem}}</h4>
+                      <button class="k-button" ng-click="addAfter(selectedItem)">Get Child</button>
                       <button class="k-button" ng-click="addBelow(selectedItem)">Add child item</button>
                       <button class="k-button" ng-click="remove(selectedItem)">Delete</button>
-                    </div>
+                    </div> -->
                 </div>
                 <style>
                     .k-treeview .k-in {
@@ -26,14 +54,14 @@
                     }
                 </style>
 
-
+<!-- 
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.common-material.min.css" />
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.material.min.css" />
-<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.material.mobile.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.material.mobile.min.css" />  -->
 
 <!-- <script src="https://kendo.cdn.telerik.com/2018.3.911/js/jquery.min.js"></script>
 <script src="https://kendo.cdn.telerik.com/2018.3.911/js/angular.min.js"></script> -->
-<script src="https://kendo.cdn.telerik.com/2018.3.911/js/kendo.all.min.js"></script>
+<!-- <script src="https://kendo.cdn.telerik.com/2018.3.911/js/kendo.all.min.js"></script> -->
         
 
 

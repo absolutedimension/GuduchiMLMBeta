@@ -311,3 +311,22 @@ h1{
   background: #e7e7e7;
   border: 0px;
   }
+
+
+  ul {
+    /* list-style-type: none; */
+    margin-left: 10%;
+    margin-top:0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+/* li {
+   # float: left;
+} */
+
+.k-treeview .k-icon {
+  background-color: black;
+  border-radius: 50%;
+}
