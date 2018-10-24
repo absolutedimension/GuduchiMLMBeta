@@ -195,12 +195,35 @@ h1{
   height: 330px;
   background: #DDD;
 }
+.showcase-item__link:hover {
+
+  background:rgb(255,197,97);
+}
 
 .showcase-item__link:after {
   content: '';
   display: block;
   clear: both;
 }
+.treeSearch {
+  width: 300px;
+  text-align: center;
+  left: 40%;
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 45px;
+  border: 0px;
+  background: #e2e2e2
+  }
+  .treeSearchButton {
+  text-align: center;
+  left: 40%;
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 0px;
+  }
 
 .showcase-item__image {
   width: 80px;
@@ -326,7 +349,62 @@ h1{
    # float: left;
 } */
 
-.k-treeview .k-icon {
+/* .k-treeview  {
   background-color: black;
   border-radius: 50%;
+} */
+/* .k-treeview , .k-tool-icon, .k-grouping-dropclue, .k-drop-hint, .k-column-menu .k-sprite 
+.k-state-selected, .k-in ,.k-icon,.k-minus {
+  background-image: url("../img/buttons/facebook.png")
+  } */
+  /* .k-icon,.k-minus,.k-plus{
+    background-image: url("../img/buttons/facebook.png");
+    padding: 10px;
+    background: #6D0505 
+  } */
+  /* #treeviewDiv  ul li div span  {
+    padding: 10px;
+    background: transparent;
+    
 }
+#treeviewDiv  ul li div span span  {
+  background: transparent;
+ k-icon k-minus 
+} */
+.k-treeview ul li div span.k-state-selected.k-in {
+background: transparent;
+border:0px;
+border-block-end-color: transparent;
+
+/* background-image: url("../img/buttons/facebook.png"); */
+}
+.md-card-content{
+  background: greenyellow;
+}
+.k-treeview ul li div span.k-icon.k-plus {
+  background: transparent;
+  padding: 15px;
+ 
+  background-image: url("../img/buttons/expand.png");
+  }
+.k-treeview ul li div span.k-icon.k-minus {
+    background: transparent;
+    padding: 15px;
+   
+    background-image: url("../img/buttons/collapse.png");
+  }
+
+/* .k-treeview ul li div span span {
+  background: transparent;
+  
+}
+.k-state-selected .k-in{
+  background: transparent;
+} */
+/* .k-plus {
+  background-image: url("../img/buttons/github.png");
+}
+.k-minus {
+  background-image: url("../img/buttons/paypal.png");
+} */
+  

@@ -1,14 +1,16 @@
 <div ng-controller="TreeViewController">
 
-
+       
    
                 <div class="demo-section k-content">
                     <div class="box-col">
-                        <h4>TreeView</h4>
-                        <div kendo-tree-view="tree"
-                         k-data-source="treeData"
+                        <input id="treeSearch" ng-model="searchInput" class="treeSearch" type="text" placeholder="Type sponsor id to search">
+                            <md-button class="treeSearchButton" ng-click="viewChildren(searchInput)">Get Tree</md-button></input>
+                        <div kendo-tree-view="tree" id="treeviewDiv"
+                         k-data-source="treeData" 
                          k-on-change="selectedItem = dataItem">
-                         <md-card  class="showcase-item__link" k-template style="height: 150px;cursor: pointer;" ng-click='addBelow(dataItem,selectedItem)' >
+                        
+                         <md-card  class="showcase-item__link" k-template style="height: 130px;cursor: pointer;" ng-click='addBelow(dataItem,selectedItem)' >
                                 <md-card-content>
                                 <!-- <h4><center>On joining 2 pair</center></h4><br>
                                 <h5>Get 500 cashback<br>and <br>DINNER SET</h5> -->
@@ -17,14 +19,15 @@
                                
                                        <!-- <h5>Member Name</h5> -->
                                     <div style="width:100%">
-                                        <img style="float: left;" ng-src="modules/users/client/img/profile/default.png" ng-click='addBelow(dataItem,selectedItem)' class="header-profile-image" src="modules/users/client/img/profile/default.png">
-                                        <h5 style="float:right;"> {{dataItem.displayName}}</h5>
+                                        <img style="float: left;"  ng-click='addBelow(dataItem,selectedItem)' class="header-profile-image" src="modules/users/client/img/profile/default.png">
+                                        
                                     </div>   
-                                   
-                                    <h5> {{dataItem.name}}</h5>
-                                    <h5> {{dataItem.your_address}}</h5>
+                                    <h5 > {{dataItem.displayName}}</h5>
+                                    <h5> Id:{{dataItem.name}}</h5>
+                                    <!-- <h5> {{dataItem.your_address}}</h5> -->
 
-                                    <h5> Parent Name :{{dataItem.sponsor_id}}</h5>
+                                    <h5> Sponsor :{{dataItem.sponsor_id}}</h5>
+                                    <h5> Side :{{dataItem.side}}</h5>
                                 
                                 
                                 <!-- <a class="btn btn-default b" width="50px" ui-sref="addmember">2 Pair</a> -->
@@ -37,7 +40,7 @@
                             <!-- <span k-template>
                                     <img ng-src="modules/users/client/img/profile/default.png" ng-click='addBelow(dataItem)' class="header-profile-image" src="modules/users/client/img/profile/default.png">
                                     {{dataItem.name}}
-                                 <!-- {{dataItem.name}} <button class='k-button' ng-click='addBelow(dataItem)'>GetChild</button> -->
+                                 <! {{dataItem.name}} <button class='k-button' ng-click='addBelow(dataItem)'>GetChild</button> -->
                             <!-- </span> -->
                          </div>
                     </div>
@@ -48,11 +51,14 @@
                       <button class="k-button" ng-click="remove(selectedItem)">Delete</button>
                     </div> -->
                 </div>
-                <style>
-                    .k-treeview .k-in {
-                        padding: 5px;
+                <!-- <style>
+                    
+                    .k-treeview .k-in .k-minus .k-plus .k-state-selected .k-icon{
+                        padding: 50px;
+                        background: red;
+
                     }
-                </style>
+                </style> -->
 
 <!-- 
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.common-material.min.css" />
@@ -90,6 +96,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine-html.js"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine.js"/> -->
+<md-progress-circular style="width:70px;height:70px;left: 50%; bottom: 50%;position:absolute; display: inline;" md-mode="indeterminate" ng-disabled="activated" class="md-warn md-hue-3" md-diameter="70"></md-progress-circular>
 </div>
 
 

@@ -49,7 +49,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$http', '
       user.fromApprove = 'Y';
      // console.log("User Object before update==="+JSON.stringify(user));
       user.$update(function () {
-        $state.go('admin.user', {
+        $state.go('admin.toapproveusers', {
           userId: user._id
         });
       }, function (errorResponse) {

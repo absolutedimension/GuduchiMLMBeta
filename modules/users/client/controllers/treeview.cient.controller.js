@@ -6,16 +6,27 @@ angular.module('users').controller('TreeViewController', ['$scope', '$timeout', 
   $scope.delete = function (data) {
       data.nodes = [];
     };
+
+     
+
+      $scope.activated = false;
+     
+  
     var nodes = [];
+    var usernamesForChildPopulated =[];
     $scope.add = function (data) {
       var post = data.nodes.length + 1;
       var newName = data.name + '-' + post;
     //  $scope.getTreeNodes(Authentication.user.username);
       data.nodes.push({ name: newName, nodes: [] });
     };
-  $scope.viewChildren = function(username){
+    $scope.viewChildren = function(username){
+      $scope.treeData;
+      $scope.tree;
+      nodes = [];
+      usernamesForChildPopulated = [];
       getTreeNodes(username);
-  }
+    }
   //angular.element('tree').treeview({data: getTreeNodes()});
    // $scope.tree = [{ name: "Add Gudichi Member", nodes: [] }];
   getTreeNodes(Authentication.user.username);
@@ -23,16 +34,13 @@ function getTreeNodes(username){
      $http.post('api/auth/getChild',{"username":username}).then(function(response){
        console.log("Response :"+JSON.stringify(response));
       // var mlmTree = new Tree();
+      
 
        for(var i= 0;i<response.data.length;i++){
-        //  var leftRight ={
-        //     left:(response.data[i].side == 'L') ? 'left':'right',
-        //     right:(response.data[i].side == 'R') ? 'right':'left'
-        //  };
-        // mlmTree.add(leftRight);
-         nodes.push({ name: response.data[i].username,your_address:response.data[i].your_address, displayName:response.data[i].displayName,sponsor_id:response.data[i].sponsor_id,nodes: [{child1:response.data[i].childs[0]},{child2:response.data[i].childs[1]}] });
+          nodes.push({ name: response.data[i].username,side:response.data[i].side, displayName:response.data[i].displayName,sponsor_id:response.data[i].sponsor_id,nodes: [{child1:response.data[i].childs[0]},{child2:response.data[i].childs[1]}] });
        }
        $scope.treeData = new kendo.data.HierarchicalDataSource({data:nodes});
+       $scope.activated = true;
       // $scope.tree = mlmTree;
        
       //$scope.tree = [{ name: "Add Gudichi Member", nodes: response.data }];
@@ -45,14 +53,11 @@ function getTreeNodes(username){
     $http.post('api/auth/getChild',{"username":username}).then(function(response){
       console.log("Response child............ :"+JSON.stringify(response).data,response.data);
       for(var i= 0 ; i < response.data.length; i++) {
-        $scope.tree.append({name:response.data[i].username,displayName:response.data[i].displayName,your_address:response.data[i].your_address
+        $scope.tree.append({name:response.data[i].username,displayName:response.data[i].displayName,side:response.data[i].side
         ,sponsor_id:response.data[i].sponsor_id}, $scope.tree.select());
       }
-      console.log("$scope.tree :"+$scope.tree);
-      child_populated = true;
-     // $scope.tree.append({name:response.data.username}, $scope.tree.select());
-     // array.splice(index + 1, 0, {name:response.data.data.username});
-     // return { name: response.username };
+      usernamesForChildPopulated.push(username);
+      $scope.activated = true;
     }).catch(function(error){
        alert("error :"+JSON.stringify(error));
     });
@@ -90,21 +95,25 @@ function getTreeNodes(username){
    // array.splice(index + 1, 0, newItem);
   };
   var child_populated = false;
-  $scope.addBelow = function(item,selectedItem) {
-    // can't get this to work by just modifying the data source
-    // therefore we're using tree.append instead.
-   // var newItem = makeItem();
+  $scope.addBelow = function(item,selectedItem,id) { 
+    var found = false;
+    $scope.activated = false;
+    for(var i = 0; i < usernamesForChildPopulated.length; i++) {
+    if (usernamesForChildPopulated[i]== item.name) {
+    found = true;
+    break;
+    }
+    }
     var array = item.parent();
     var index = array.indexOf(item);
-    console.log("item.username..........  :"+JSON.stringify(item ));
-    if(item.name == selectedItem.name && !child_populated) {
-      
-      var newItem = getChildById(item.name,array,index);
+    console.log("item.username.......... :"+JSON.stringify(item ));
+    //if(item.name == selectedItem.name && !child_populated) {
+    if(!found){
+    var newItem = getChildById(item.name,array,index);
     } else {
-      alert("All childs for "+item.username+" populated");
+      $scope.activated = true;
+    alert("All childs for "+item.name+" populated");
     }
-    
-    //$scope.tree.append(newItem, $scope.tree.select());
   };
 
   $scope.remove = function(item) {

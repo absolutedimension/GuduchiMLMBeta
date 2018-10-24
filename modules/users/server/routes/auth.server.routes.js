@@ -25,6 +25,7 @@ module.exports = function (app) {
   app.route('/api/auth/getAllNodes').post(users.getAllNodesForUsername);
   app.route('/api/auth/signin').post(users.signin);
   app.route('/api/auth/signout').get(users.signout);
+  app.route('/api/auth/getSponsor/:sponsorId').get(users.validateSponsorId);
 
   // Setting the facebook oauth routes
   app.route('/api/auth/facebook').get(users.oauthCall('facebook', {

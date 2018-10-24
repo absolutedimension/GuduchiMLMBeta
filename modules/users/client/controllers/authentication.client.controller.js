@@ -1,13 +1,17 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$state', '$http', '$location', '$window', 'Authentication', 'PasswordValidator',
-  function ($scope, $state, $http, $location, $window, Authentication, PasswordValidator) {
+angular.module('users').controller('AuthenticationController', ['$scope', '$state', '$http', '$location', '$window', 'Authentication', 'PasswordValidator','$timeout',
+  function ($scope, $state, $http, $location, $window, Authentication, PasswordValidator, $timeout) {
     $scope.authentication = Authentication;
     $scope.popoverMsg = PasswordValidator.getPopoverMsg();
     var registerPath="/api/auth/registerByUser";
+    var responseMessage;
 
     if ($scope.authentication.user && $scope.authentication.user.roles[0] === 'admin') {
       registerPath = "/api/auth/register";
+      responseMessage = "User added successfully.";
+    }else{
+      responseMessage = "Your request is submitted to admin for approval";
     }
     
 
@@ -33,7 +37,12 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
        // $scope.authentication.user = response;
 
         // And redirect to the previous or home page
-        $state.go($state.previous.state.name || 'home', $state.previous.params);
+        $scope.error =responseMessage;
+      //  alert("User is register");
+        // $timeout(function(){
+        //   $state.go($state.previous.state.name || 'home', $state.previous.params);
+        // },5000);
+        
       }).error(function (response) {
         $scope.error = response.message;
       });

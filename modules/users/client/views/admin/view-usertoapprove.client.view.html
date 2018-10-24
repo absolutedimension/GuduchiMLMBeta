@@ -1,4 +1,4 @@
-<section>
+<section style="margin:50px;background:#fff">
   <div class="page-header">
     <div class="row">
       <div class="col-md-6">
@@ -46,19 +46,26 @@
         <div class="col-md-3"><strong>Roles</strong></div>
         <div class="col-md-6" ng-bind="user.roles"></div>
       </div>
+    <hr/>
       <div class="row">
           <div class="col-md-3"><strong>Side</strong></div>
           <div class="col-md-6" ng-bind="user.side"></div>
         </div>
+      <hr/>
         <form name="userForm" ng-submit="approveUser(userForm.$valid)" novalidate>
           <fieldset>
         <div class="form-group" show-errors >
-          <label><input type="checkbox" name="approved" ng-model="user.approved" required >Approv</label>
+            <div class="row">
+                <div class="col-md-3"><strong>Approve user</strong></div>
+                <div class="col-md-6"><input type="checkbox" name="approved" ng-model="user.approved" required ></div> 
+              </div>
+            <hr/>
+         
           <div ng-messages="userForm.approved.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Please approve user</p>
       </div>
       <div class="text-center form-group ">
-        <button type="submit" class="btn btn-primary">Approve</button>  
+        <button type="submit" class="btn btn-primary">Approv</button>  
         
       </div>
           </div>
